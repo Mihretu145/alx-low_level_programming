@@ -1,67 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-int n = 1;
-int mul3;
-int show;
-
-do
-{
-mul3 = 3 * n;
-
-if (n == mul3)
-{
-show = 333;
-printf("%d Fizz", show);
-}
-n++;
-}
-while (n <= 100);
-printf("\n");
-printf("%d ", n);
-return 0;
-=======
 /**
- * main - It is Fizz-Buzz test
- * Return: print results
+ * main - prints the numbers from 1 to 100
+ * 3 multiples print Fizz instead of the number
+ * 5 multiples print Buzz instead of the number
+ * 3 & 5 multiples print FizzBuzz instead of the number
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-int n;
+int i;
+char f[] = "Fizz";
+char b[] = "Buzz";
+char fb[] = "FizzBuzz";
 
-for (n = 1; n <= 100; n++)
+for (i = 1; i <= 100; i++)
 {
-if (n % 3 == 0 || n % 5 == 0)
-{
-if (n % 3 == 0 && n % 5 == 0)
-{
-printf("FizzBuzz ");
-}
-
-if (n % 3 == 0 && n % 5 != 0)
-{
-printf("Fizz ");
-}
-if (n % 5 == 0 && n % 3 != 0)
-{
-if (n == 100)
-{
-printf("Buzz");
-}
+if (i == 100)
+printf("%s", b);
+else if ((i % 3 == 0) && (i % 5 == 0))
+printf("%s ", fb);
+else if (i % 3 == 0)
+printf("%s ", f);
+else if (i % 5 == 0)
+printf("%s ", b);
 else
-{
-printf("Buzz ");
-}
-}
-}
-else
-{
-printf("%d ", n);
-}
+printf("%d ", i);
 }
 printf("\n");
 return (0);
->>>>>>> bcbbdddacb50fc929e423b95e635ca0231cccbdd
 }
