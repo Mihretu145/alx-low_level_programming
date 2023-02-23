@@ -1,5 +1,6 @@
 #include <stdio.h>
-<<<<<<< HEAD
+#include <stdlib.h>
+
 int main()
 {
 int n = 1;
