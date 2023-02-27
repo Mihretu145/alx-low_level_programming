@@ -1,7 +1,7 @@
 #include "main.h"
 /**
 * puts2 - function should print only one charactor out of two
-* starting with the first one 
+* starting with the first one
 * @str: input
 * Return: print
 */
@@ -24,4 +24,6 @@ if (o % 2 == 0)
 {
 _putchar(str[o]);
 }
+}
+_putchar('\n');
 }
