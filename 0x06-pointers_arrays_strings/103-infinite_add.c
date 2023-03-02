@@ -1,89 +1,86 @@
 #include main.h 
 
 /**
- * infinite_add - adds two integers stored as strings
+ * _strlen - returns the length of the string
+ * @s: the string
  *
- * @n1: first integer string to add
- * @n2: second integer string to add
- * @r: array to store resulting string in
- * @size_r: size of array r
- *
- * Return: the summed string in r. If r is too small for the result,
- * return 0;
+ * Return: the length of the s string
  */
+
+int_strlen(char *s)
+{
+int i = 0;
+
+while (s[i])
+i++;
+return (i);
+}
+
+/**
+ * rev_n_string - reverses a string until the n th term
+ * @s: the string to be reversed
+ * @n: the n th term index
+ */
+
+void rev_n_string(char *s, int n)
+{
+int i = 0;
+int j = n - 1, max = j / 2;
+char tmp;
+
+while (j > max)
+{
+tmp = s[i];
+s[i++] = s[j];
+s[j--] = tmp;
+}
+}
+
+/**
+ * infinite_add - adds two numbers
+ * @n1: the first number
+ * @n2: the second number
+ * @r: the buffer to store the result
+ * @size_r: the buffer size
+ *
+ * Return: pointer to the result if buffor is not overflowed, else 0
+ */
+
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-int carry = 0, index = 0, index2;
-char *s1 = n1, *s2 = n2;
+int l1 = _strlen(n1), l2 = _strlen(n2);
+int ret = 0, j = 0, k = 0, tmp, a, b;
 
-while (*s1 != 0)
-s1++;
-while (*s2 != 0)
-s2++;
-size_r--;
-r[size_r] = 0;
-s1--;
-s2--;
-while (s2 != n2 - 1 && s1 != n1 - 1)
-{
-r[index] = *s2 - '0' + *s1 + carry;
-carry = 0;
-if (r[index] > '9')
-{
-carry++;
-r[index] -= 10;
-}
-index++;
-s2--;
-s1--;
-if (size_r == index && (s1 != n1 - 1 || s2 != n2 - 1 || carry == 1))
+if (l1 >= size_r || l2 >= size_r)
 return (0);
-}
-while (s1 != n1 - 1)
+
+while (k < l1 || k < l2)
 {
-r[index] = *s1 + carry;
-carry = 0;
-if (r[index] > '9')
-{
-carry = 1;
-r[index] -= 10;
-}
-s1--;
-index++;
-if (size_r == index && (s1 != n1 - 1 ||  carry == 1))
-return (0);
-}
-while (s2 != n2 - 1)
-{
-r[index] = *s2 + carry;
-carry = 0;
-if (r[index] > '9')
-{
-carry = 1;
-r[index] -= 10;
-}
-s2--;
-index++;
-if (size_r == index && (s2 != n2 - 1 || carry == 1))
-return (0);
-}
-if (carry == 1)
-{
-r[index] = '1';
-r[index + 1] = 0;
-}
+if (k >= l1)
+a = 0;
 else
-{
-r[index--] = 0;
+a = n1[l1 - k - 1] - '0';
+
+if (k >= l2)
+b = 0;
+else
+b = n2[l2 - k - 1] - '0';
+
+tmp = a + b + ret;
+ret = (tmp >= 10) ? 1 : 0;
+r[k++] = (tmp % 10) + '0';
 }
-index2 = 0;
-while (index2 <= index)
+
+if (ret == 1)
 {
-carry = r[index];
-r[index] = r[index2];
-r[index2] = carry;
-index--;
-index2++;
+if (k < size_r - 1)
+r[k++] = '1';
+else
+return (0);
 }
+j = k;
+while (j <= size_r)
+r[j++] = '\0';
+rev_n_string(r, k);
 return (r);
 }
