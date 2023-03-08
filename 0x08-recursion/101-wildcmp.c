@@ -1,12 +1,13 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
  * wildcmp - Entry Point
- * @s1: input one
- * @s2: input two
+ * @s1: input
+ * @s2: input
  * Return: 0
  */
 int wildcmp(char *s1, char *s2)
 {
-return (0);
+	return (0);
 }
