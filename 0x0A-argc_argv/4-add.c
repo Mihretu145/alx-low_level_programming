@@ -16,7 +16,7 @@ return (0);
 
 for (i = 1; i < argc; i++)
 {
-if ((!atoi(argv[i]))
+if (!atoi(argv[i]))
 {
 printf("%s\n", "Error");
 return (1);
@@ -24,5 +24,6 @@ return (1);
 sum += atoi(argv[i]);
 }
 printf("%d\n", sum);
+
 return (0);
 }
