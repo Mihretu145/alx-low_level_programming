@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * print_name - prints a name.
@@ -13,3 +13,4 @@ if (!f || !name)
 return;
 f(name);
 }
+
